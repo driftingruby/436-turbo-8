@@ -1,0 +1,9 @@
+<%= turbo_stream.replace(
+        "new_comment",
+        partial: "comments/new",
+        locals: { post: @post, comment: Comment.new }) %>
+
+<%= turbo_stream.append(
+        "comments",
+        partial: "comments/comment",
+        locals: { post: @post, comment: @comment }) %>

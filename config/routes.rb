@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'welcome#index'
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
+  end
+  root to: 'posts#index'
   get 'welcome/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

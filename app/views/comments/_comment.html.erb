@@ -1,0 +1,14 @@
+<%= content_tag :div, id: dom_id(comment), class: "card mb-3" do %>
+  <div class="card-body">
+    <p class="card-text"><%= comment.content %></p>
+    <p class="card-text">
+      <small class="text-muted">
+        Posted <%= time_ago_in_words comment.created_at %> ago |
+        Posted by <%= comment.session %>
+        <% if session.id.to_s == comment.session %>
+          <%= link_to "Delete", [post, comment], "data-turbo-method": :delete %>
+        <% end %>
+      </small>
+    </p>
+  </div>
+<% end %>
